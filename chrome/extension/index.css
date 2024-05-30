@@ -1,0 +1,146 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+lengend,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font: 12px/1 Tahoma, Helvetica, ans-serif;
+  color: #474747;
+}
+body,
+table,
+td,
+div,
+p {
+  word-wrap: break-word;
+}
+h1 {
+  font-size: 18px;
+}
+h2 {
+  font-size: 16px;
+}
+h3 {
+  font-size: 14px;
+}
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+code,
+kbd,
+pre,
+samp,
+tt {
+  font-family: 'Courier New', Courier, monospace;
+}
+small {
+  font-size: 12px;
+}
+ul,
+ol {
+  list-style: none;
+}
+abbr[title],
+acronym[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+q:before,
+q:after {
+  content: '';
+}
+legend {
+  color: #000;
+}
+fieldset,
+img {
+  border: none;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+hr {
+  margin: 10px 0;
+  border: 1px solid #666;
+  height: 1px;
+}
+
+html {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 10px 0 0 10px;
+  width: 100%;
+  background: #e1e1e1;
+  overflow-x: hidden;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #333;
+}
+a:hover,
+a:active {
+  text-decoration: underline;
+  color: #f30;
+}
+html {
+  background: #f8f9fc;
+  padding: 0 30px 30px;
+}
+body {
+  width: 100%;
+  font-size: 14px;
+}
+h1 {
+  font-size: 20px;
+  margin: 35px 0 0 0;
+}
+h2 {
+  font-size: 16px;
+  margin: 35px 0 0 0;
+}

@@ -1,0 +1,114 @@
+.containerFluid {
+  width: 220px;
+  padding: 10px;
+}
+
+.toolItem {
+  padding: 3px 0px 3px 3px;
+  margin: 0px;
+  line-height: 18px;
+}
+
+.toolTtemTitle {
+  margin-right: 10px;
+}
+
+a.ipSupport:before {
+  content: 'Turn On'
+}
+
+a.inuse:before {
+  content: 'Turn Off'
+}
+
+.fishdSwitch {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  height: 16px;
+  line-height: 14px;
+  vertical-align: middle;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background-color: #999;
+  cursor: pointer;
+  transition: all 0.36s;
+  user-select: none;
+}
+
+.fishdSwitchInner {
+  color: #fff;
+  font-size: 12px;
+  margin-left: 18px;
+  margin-right: 4px;
+  display: block;
+}
+
+.fishdSwitch:before,
+.fishdSwitch:after {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 1px;
+  top: 1px;
+  border-radius: 100px;
+  background-color: #fff;
+  content: " ";
+  cursor: pointer;
+  transition: all 0.36s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+}
+
+.fishdSwitch:after {
+  box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+}
+
+.fishdSwitch:active:before,
+.fishdSwitch:active:after {
+  width: 24px;
+}
+
+.fishdSwitch:before {
+  content: "\E6A4";
+  font-family: "fishdicon";
+  animation: loadingCircle 1s infinite linear;
+  text-align: center;
+  background: transparent;
+  z-index: 1;
+  display: none;
+  font-size: 12px;
+}
+
+.fishdSwitch:focus {
+  box-shadow: 0 0 0 2px rgba(51, 126, 255, 0.2);
+  outline: 0;
+}
+
+.fishdSwitch:focus:hover {
+  box-shadow: none;
+}
+
+.fishdSwitchChecked {
+  background-color: #337eff;
+}
+
+.fishdSwitchChecked .fishdSwitchInner {
+  margin-left: 4px;
+  margin-right: 18px;
+}
+
+.fishdSwitchChecked:before {
+  left: 100%;
+  margin-left: -19px;
+}
+
+.fishdSwitchChecked:after {
+  left: 100%;
+  transform: translateX(-100%);
+  margin-left: -1px;
+}
