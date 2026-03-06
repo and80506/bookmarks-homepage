@@ -1,113 +1,79 @@
-# React Chrome Extension Boilerplate
+# Bookmarks Homepage
 
-[![Build Status](https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate.svg?branch=master)](https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate)
-[![Build status: Windows](https://ci.appveyor.com/api/projects/status/b5xy6ev6oykth0d2/branch/master?svg=true)](https://ci.appveyor.com/project/jhen0409/react-chrome-extension-boilerplate/branch/master)
-[![NPM version](http://img.shields.io/npm/v/react-chrome-extension-boilerplate.svg?style=flat)](https://www.npmjs.com/package/react-chrome-extension-boilerplate)
-[![Dependency Status](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate.svg)](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate)
-[![devDependency Status](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate/dev-status.svg)](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate#info=devDependencies)
+一个简洁的 Chrome 扩展，让你的书签在新标签页中清晰可见。
 
-> Boilerplate for Chrome Extension React.js project.
+## 功能特性
 
-## Features
+- **书签可视化**：在新标签页中以清晰的层级结构展示你的书签
+- **智能搜索**：中文用户可使用关键词搜索，自动翻译成英文后进行 Google 搜索
+- **简洁设计**：清爽的界面风格，快速访问常用网站
 
- - Simple [React](https://github.com/facebook/react)/[Redux](https://github.com/rackt/redux) examples of Chrome Extension Window & Popup & Inject pages
- - Hot reloading React/Redux (Using [Webpack](https://github.com/webpack/webpack) and [React Transform](https://github.com/gaearon/react-transform))
- - Write code with ES2015+ syntax (Using [Babel](https://github.com/babel/babel))
- - E2E tests of Window & Popup & Inject pages (Using [Chrome Driver](https://www.npmjs.com/package/chromedriver), [Selenium Webdriver](https://www.npmjs.com/package/selenium-webdriver))
+## 安装
 
-## Examples
+### 从 Chrome Web Store 安装
 
-The example is edited from [Redux](https://github.com/rackt/redux) TodoMVC example.
+*即将上线*
 
-#### Popup
-
-![Popup](https://cloud.githubusercontent.com/assets/3001525/14128490/dc05e9f8-f653-11e5-9de6-82d1de01844a.gif)
-
-The `todos` state will be saved to `chrome.storage.local`.
-
-#### Window
-
-![Window](https://cloud.githubusercontent.com/assets/3001525/14128489/da176b62-f653-11e5-9bff-fefc35232358.gif)
-
-The context menu is created by [chrome/extension/background/contextMenus.js](chrome/extension/background/contextMenus.js).
-
-#### Inject page
-
-The inject script is being run by [chrome/extension/background/inject.js](chrome/extension/background/inject.js). A simple example will be inject bottom of page(`https://github.com/*`) if you visit.
-
-If you are receiving the error message `Failed to load resource: net::ERR_INSECURE_RESPONSE`, you need to allow invalid certificates for resources loaded from localhost. You can do this by visiting the following URL: `chrome://flags/#allow-insecure-localhost` and enabling **Allow invalid certificates for resources loaded from localhost**.
-
-## Installation
+### 从源码安装
 
 ```bash
-# clone it
-$ git clone https://github.com/jhen0409/react-chrome-extension-boilerplate.git
+# 克隆仓库
+git clone https://github.com/your-username/bookmarks-homepage.git
 
-# Install dependencies
-$ npm install
+# 安装依赖 (需要 Node.js 14.x)
+nvm use 14
+npm install
+
+# 构建
+npm run build
 ```
 
-## Development
+然后在 Chrome 中：
+1. 打开 `chrome://extensions/`
+2. 开启「开发者模式」
+3. 点击「加载已解压的扩展程序」
+4. 选择项目的 `build` 文件夹
 
-* Run script
-```bash
-# build files to './dev'
-# start webpack development server
-$ npm run dev
-```
-* If you're developing Inject page, please allow `https://localhost:3000` connections. (Because `injectpage` injected GitHub (https) pages, so webpack server procotol must be https.)
-* [Load unpacked extensions](https://developer.chrome.com/extensions/getstarted#unpacked) with `./dev` folder.
-
-#### React/Redux hot reload
-
-This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window & Inject page.
-
-#### Using Redux DevTools Extension
-
-You can use [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) on development mode.
-
-## Build
+## 开发
 
 ```bash
-# build files to './build'
-$ npm run build
+# 开发模式（支持热重载）
+npm run dev
 ```
 
-## Compress
+然后在 Chrome 中加载 `dev` 文件夹。
+
+## 构建
 
 ```bash
-# compress build folder to {manifest.name}.zip and crx
-$ npm run build
-$ npm run compress -- [options]
+# 构建生产版本
+npm run build
+
+# 打包为 .zip 和 .crx 文件
+npm run compress
 ```
 
-#### Options
+## 技术栈
 
-If you want to build `crx` file (auto update), please provide options, and add `update.xml` file url in [manifest.json](https://developer.chrome.com/extensions/autoupdate#update_url manifest.json).
+- [React](https://reactjs.org/) - UI 框架
+- [Redux](https://redux.js.org/) - 状态管理
+- [Webpack](https://webpack.js.org/) - 模块打包
+- [Babel](https://babeljs.io/) - JavaScript 编译
+- Chrome Extension Manifest V3
 
-* --app-id: your extension id (can be get it when you first release extension)
-* --key: your private key path (default: './key.pem')  
-  you can use `npm run compress-keygen` to generate private key `./key.pem`
-* --codebase: your `crx` file url
+## 权限说明
 
-See [autoupdate guide](https://developer.chrome.com/extensions/autoupdate) for more information.
+| 权限 | 用途 |
+|------|------|
+| `bookmarks` | 读取书签数据以在新标签页展示 |
+| `storage` | 存储用户设置 |
+| `favicon` | 获取网站图标 |
+| `translate.googleapis.com` | 中文关键词翻译功能（仅对中文用户显示） |
 
-## Test
-
-* `test/app`: React components, Redux actions & reducers tests
-* `test/e2e`: E2E tests (use [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver))
-
-```bash
-# lint
-$ npm run lint
-# test/app
-$ npm test
-$ npm test -- --watch  # watch files
-# test/e2e
-$ npm run build
-$ npm run test-e2e
-```
-
-## LICENSE
+## 许可证
 
 [MIT](LICENSE)
+
+## 作者
+
+Andy Wu
