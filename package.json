@@ -1,6 +1,6 @@
 {
   "name": "bookmarks-homepage",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "Make your bookmarks visible in new tabs",
   "scripts": {
     "build": "node scripts/build",
@@ -11,7 +11,15 @@
     "test-e2e": "cross-env NODE_ENV=test mocha -r ./test/setup-app test/e2e",
     "test": "cross-env NODE_ENV=test mocha -r ./test/setup-app test/app"
   },
-  "keywords": ["chrome", "extension", "react", "redux", "hot reload", "webpack", "boilerplate"],
+  "keywords": [
+    "chrome",
+    "extension",
+    "react",
+    "redux",
+    "hot reload",
+    "webpack",
+    "boilerplate"
+  ],
   "author": "andy wu",
   "license": "MIT",
   "devDependencies": {

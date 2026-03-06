@@ -1,8 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import { getBookmarks, removeBookmark } from '../utils/bookmarks';
+import { getBookmarks } from '../utils/bookmarks';
 import style from './MainSection.css';
 
 const cacheIds = {};
+const isChineseUser = () => {
+  const lang = navigator.language || navigator.userLanguage || '';
+  return lang.startsWith('zh');
+};
+
 export default class MainSection extends Component {
 
   static propTypes = {
@@ -14,8 +19,64 @@ export default class MainSection extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      treeNodes: []
+      treeNodes: [],
+      searchKeyword: ''
     };
+  }
+
+  handleSearchChange = (e) => {
+    this.setState({ searchKeyword: e.target.value });
+  }
+
+  translateToEnglish = async (text) => {
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=${encodeURIComponent(text)}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data && data[0] && data[0][0] && data[0][0][0]) {
+        return data[0][0][0];
+      }
+      return text;
+    } catch (error) {
+      console.error('Translation error:', error);
+      return text;
+    }
+  }
+
+  handleSearch = async () => {
+    const { searchKeyword } = this.state;
+    if (!searchKeyword.trim()) return;
+    
+    const englishKeyword = await this.translateToEnglish(searchKeyword);
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(englishKeyword)}`;
+    window.location.href = searchUrl;
+  }
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.handleSearch();
+    }
+  }
+
+  renderSearchBox() {
+    if (!isChineseUser()) {
+      return null;
+    }
+    return (
+      <div className={style.searchBox}>
+        <input
+          type="text"
+          placeholder="自动翻译后再搜索"
+          value={this.state.searchKeyword}
+          onChange={this.handleSearchChange}
+          onKeyPress={this.handleKeyPress}
+          className={style.searchInput}
+        />
+        <button onClick={this.handleSearch} className={style.searchButton}>
+          确定
+        </button>
+      </div>
+    );
   }
 
   async fetchBookmarks(id, isLoop) {
@@ -38,12 +99,6 @@ export default class MainSection extends Component {
     }
   }
 
-  async handleContextMenu(id, e) {
-    if (e.type === 'contextmenu') {
-      const bookmark = await removeBookmark(id);
-    }
-  }
-
   getFaviconURL(u) {
     const url = new URL(chrome.runtime.getURL("/_favicon/"));
     url.searchParams.set("pageUrl", u);
@@ -54,13 +109,11 @@ export default class MainSection extends Component {
   renderItem(url, title, id) {
     const urlDomain = url.replace(/https?:\/\//, '');
     const faviconURL = this.getFaviconURL(url);
-    // url("${faviconURL}"), url("${url}favicon.ico"), url("https://www.icon.horse/icon/${urlDomain}"), url("https://www.google.com/s2/favicons?domain_url=${url}")
     const style = { backgroundImage: `url("${faviconURL}")` };
     return (
       <a
         href={url}
         title={title}
-        onContextMenu={(e) => this.handleContextMenu(id, e)}
       ><span style={style}></span>{title}</a>
     )
   }
@@ -119,7 +172,7 @@ export default class MainSection extends Component {
     );
   }
 
-  renderLevel1(treeNode) {
+  renderLevel1(treeNode, index) {
     const { id, title, url } = treeNode;
     const bookmarks = this.state[id] || [];
     if (!cacheIds[id]) {
@@ -131,7 +184,10 @@ export default class MainSection extends Component {
         <h1 id={id}>{this.renderItem(url, title, id)}</h1>
         :
         <section key={id}>
-          <h1 id={id}>{title}</h1>
+          <div className={style.sectionHeader}>
+            <h1 id={id}>{title}</h1>
+            {index === 0 && this.renderSearchBox()}
+          </div>
           {
             bookmarks.map(treeNode => {
               return this.renderLevel2(treeNode);
@@ -146,8 +202,8 @@ export default class MainSection extends Component {
     return (
       <div>
         {
-          treeNodes ? treeNodes.map(treeNode => {
-            return this.renderLevel1(treeNode);
+          treeNodes ? treeNodes.map((treeNode, index) => {
+            return this.renderLevel1(treeNode, index);
           }) : null
         }
       </div>
