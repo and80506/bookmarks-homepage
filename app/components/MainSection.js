@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { getBookmarks } from '../utils/bookmarks';
 import style from './MainSection.css';
+import { t, isChineseUser } from '../i18n';
 
 const cacheIds = {};
-const isChineseUser = () => {
-  const lang = navigator.language || navigator.userLanguage || '';
-  return lang.startsWith('zh');
-};
 
 export default class MainSection extends Component {
 
@@ -66,14 +63,14 @@ export default class MainSection extends Component {
       <div className={style.searchBox}>
         <input
           type="text"
-          placeholder="自动翻译后再搜索"
+          placeholder={t('searchPlaceholder')}
           value={this.state.searchKeyword}
           onChange={this.handleSearchChange}
           onKeyPress={this.handleKeyPress}
           className={style.searchInput}
         />
         <button onClick={this.handleSearch} className={style.searchButton}>
-          确定
+          {t('searchButton')}
         </button>
       </div>
     );

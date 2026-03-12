@@ -1,7 +1,7 @@
 {
   "name": "bookmarks-homepage",
-  "version": "0.9.3",
-  "description": "Make your bookmarks visible in new tabs",
+  "version": "0.9.4",
+  "description": "Transform your new tab page into a beautiful bookmarks dashboard with instant access to your favorite websites.",
   "scripts": {
     "build": "node scripts/build",
     "compress": "node scripts/compress",

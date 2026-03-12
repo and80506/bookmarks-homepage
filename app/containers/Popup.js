@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as NewTabActions from '../actions/newTab';
 import style from './popup.css';
+import { t } from '../i18n';
 
 @connect(
   state => ({
@@ -35,15 +36,23 @@ export default class Popup extends Component {
     const isOn = newTab.switchOn;
     return (
       <div className={style.containerFluid}>
-        <div className={style.toolTtem}>
-          <span className={style.toolTtemTitle}>Toggle Bookmarks Homepage:</span>
-          <span
-            className={`${style.ipSupport} ${style.fishdSwitch}${isOn ? ' ' + style.fishdSwitchChecked : ''}`}
-            onClick={this.handleClick}
-            tabIndex="0"
-          >
-            <span className={style.fishdSwitchInner}>{isOn ? 'On' : 'Off'}</span>
-          </span>
+        <div className={style.header}>
+          <span className={style.icon}>🔖</span>
+          <h3>{t('extensionName')}</h3>
+        </div>
+        <div className={style.toolItem}>
+          <div className={style.titleWrapper}>
+            <span className={`${style.statusIndicator} ${isOn ? style.active : ''}`}></span>
+            <span className={style.toolTtemTitle}>{t('toggleLabel')}</span>
+          </div>
+          <label className={style.fishdSwitch}>
+            <input
+              type="checkbox"
+              checked={isOn}
+              onChange={this.handleClick}
+            />
+            <span className={style.fishdSwitchSlider}></span>
+          </label>
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from '../../app/containers/Root';
 import App from '../../app/containers/App';
 import './index.css';
+import { t } from '../../app/i18n';
 
 chrome.storage.local.get('state', (obj) => {
   const { state } = obj;
@@ -10,7 +11,8 @@ chrome.storage.local.get('state', (obj) => {
   const newTab = initialState.newTab;
 
   if ( newTab.switchOn  === false ) {
-    chrome.tabs.update({ url: "chrome-search://local-ntp/local-ntp.html" });
+    // 当开关关闭时，直接重定向到 Google 首页
+    window.location.replace('https://www.google.com/webhp?igu=1');
     return;
   }
 
