@@ -4,31 +4,19 @@ const i18nMessages = {
     // 主界面
     searchPlaceholder: '请输入要搜索的内容',
     searchButton: '搜索',
-    bookmarksBar: '书签栏',
     
     // Popup 界面
     toggleLabel: '切换书签主页:',
-    extensionName: '书签主页',
-    
-    // 扩展页面提示
-    loading: '正在打开新标签页...',
-    extensionDisabled: '书签主页已关闭',
-    closeTab: '您可以关闭此标签页'
+    extensionName: '书签主页'
   },
   en: {
     // Main interface
-    searchPlaceholder: 'Search after auto-translation',
+    searchPlaceholder: 'Google',
     searchButton: 'Search',
-    bookmarksBar: 'Bookmarks Bar',
     
     // Popup interface
-    toggleLabel: 'Toggle Bookmarks Homepage:',
-    extensionName: 'Bookmarks Homepage',
-    
-    // Extension page prompts
-    loading: 'Opening new tab...',
-    extensionDisabled: 'Bookmarks Homepage is disabled',
-    closeTab: 'You can close this tab'
+    toggleLabel: 'Toggle Bookmarks As New Tab:',
+    extensionName: 'Bookmarks As New Tab'
   }
 };
 

@@ -43,9 +43,11 @@ export default class MainSection extends Component {
   handleSearch = async () => {
     const { searchKeyword } = this.state;
     if (!searchKeyword.trim()) return;
-    
-    const englishKeyword = await this.translateToEnglish(searchKeyword);
-    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(englishKeyword)}`;
+    let keyword = searchKeyword;
+    if (isChineseUser()) {
+      keyword = await this.translateToEnglish(keyword);
+    }
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(keyword)}`;
     window.location.href = searchUrl;
   }
 
@@ -56,9 +58,6 @@ export default class MainSection extends Component {
   }
 
   renderSearchBox() {
-    if (!isChineseUser()) {
-      return null;
-    }
     return (
       <div className={style.searchBox}>
         <input

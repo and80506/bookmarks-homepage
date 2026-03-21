@@ -1,6 +1,6 @@
 {
   "name": "bookmarks-homepage",
-  "version": "0.9.4",
+  "version": "1.0.0",
   "description": "Transform your new tab page into a beautiful bookmarks dashboard with instant access to your favorite websites.",
   "scripts": {
     "build": "node scripts/build",

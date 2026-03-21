@@ -1,12 +1,21 @@
-# Bookmarks Homepage
+# Bookmarks As New Tab
 
-一个简洁的 Chrome 扩展，让你的书签在新标签页中清晰可见。
+将书签转换为新标签页的可视化展示，方便快速访问常用网站。
 
 ## 功能特性
 
 - **书签可视化**：在新标签页中以清晰的层级结构展示你的书签
 - **智能搜索**：中文用户可使用关键词搜索，自动翻译成英文后进行 Google 搜索
 - **简洁设计**：清爽的界面风格，快速访问常用网站
+
+## Description
+将书签转换为新标签页的可视化展示，方便快速访问常用网站。Transforms bookmarks into a visual display on the New Tab page, facilitating quick access to frequently visited websites.
+
+中文区用户福利：在使用标签页内的 google 搜索时，自动将搜索词先翻译成英文后搜索。
+
+- 在新标签页中以清晰的层级结构展示你的书签 Display your bookmarks in a clear hierarchical structure on a new tab.
+- 实时同步书签 Real-time Bookmark Synchronization
+- 弹出框中提供开关可临时关闭该功能 A toggle switch is provided within the pop-up window to temporarily disable this feature.
 
 ## 安装
 

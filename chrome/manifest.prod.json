@@ -1,10 +1,10 @@
 {
-  "version": "0.9.4",
-  "name": "Bookmarks Homepage",
+  "version": "1.0.0",
+  "name": "Bookmarks As New Tab",
   "manifest_version": 3,
   "description": "Transform your new tab page into a beautiful bookmarks dashboard with instant access to your favorite websites.",
   "action": {
-    "default_title": "Open New Tab",
+    "default_title": "New Tab",
     "default_popup": "popup.html"
   },
   "icons": {
