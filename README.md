@@ -1,4 +1,4 @@
-# Bookmarks As New Tab
+# Bookmarks as New Tab
 
 将书签转换为新标签页的可视化展示，方便快速访问常用网站。
 

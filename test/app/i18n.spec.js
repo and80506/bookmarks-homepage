@@ -43,6 +43,6 @@ describe('i18n English user experience', () => {
   it('falls back to English copy for toggle label', () => {
     expect(getUserLanguage()).to.equal('en');
     expect(isChineseUser()).to.equal(false);
-    expect(t('toggleLabel')).to.equal('Toggle Bookmarks As New Tab:');
+    expect(t('toggleLabel')).to.equal('Toggle Bookmarks as New Tab:');
   });
 });

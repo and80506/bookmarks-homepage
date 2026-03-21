@@ -2,7 +2,7 @@
 const i18nMessages = {
   zh: {
     // 主界面
-    searchPlaceholder: '请输入要搜索的内容',
+    searchPlaceholder: '输入中文将自动翻译成英文后搜索',
     searchButton: '搜索',
     
     // Popup 界面
@@ -15,8 +15,8 @@ const i18nMessages = {
     searchButton: 'Search',
     
     // Popup interface
-    toggleLabel: 'Toggle Bookmarks As New Tab:',
-    extensionName: 'Bookmarks As New Tab'
+    toggleLabel: 'Toggle Bookmarks as New Tab:',
+    extensionName: 'Bookmarks as New Tab'
   }
 };
 

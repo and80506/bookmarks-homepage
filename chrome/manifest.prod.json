@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "name": "Bookmarks As New Tab",
+  "name": "书签主页 Bookmarks as New Tab",
   "manifest_version": 3,
-  "description": "Transform your new tab page into a beautiful bookmarks dashboard with instant access to your favorite websites.",
+  "description": "将书签转换为新标签页的导航风格主页。Convert your bookmarks into a navigation-style homepage for your new tabs.",
   "action": {
     "default_title": "New Tab",
     "default_popup": "popup.html"
