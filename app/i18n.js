@@ -1,22 +1,8 @@
 // 国际化模块
 const i18nMessages = {
   zh: {
-    // 主界面
-    searchPlaceholder: '输入中文将自动翻译成英文后搜索',
-    searchButton: '搜索',
-    
-    // Popup 界面
-    toggleLabel: '切换书签主页:',
-    extensionName: '书签主页'
   },
   en: {
-    // Main interface
-    searchPlaceholder: 'Google',
-    searchButton: 'Search',
-    
-    // Popup interface
-    toggleLabel: 'Toggle Bookmarks as New Tab:',
-    extensionName: 'Bookmarks as New Tab'
   }
 };
 

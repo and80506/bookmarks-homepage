@@ -4,8 +4,7 @@
   "manifest_version": 3,
   "description": "将书签转换为新标签页的导航风格主页。Convert your bookmarks into a navigation-style homepage for your new tabs.",
   "action": {
-    "default_title": "New Tab",
-    "default_popup": "popup.html"
+    "default_title": "New Tab"
   },
   "icons": {
     "16": "img/icon-16.png",
@@ -20,15 +19,9 @@
   },
   "permissions": [
     "bookmarks",
-    "storage",
-    "favicon",
-    "tabs"
-  ],
-  "host_permissions": [
-    "https://translate.googleapis.com/*",
-    "https://www.google.com/*"
+    "favicon"
   ],
   "content_security_policy": {
-    "extension_pages": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src * 'self' data: https:; connect-src https://translate.googleapis.com https://www.google.com;"
+    "extension_pages": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src * 'self' data: https:; connect-src 'self';"
   }
 }

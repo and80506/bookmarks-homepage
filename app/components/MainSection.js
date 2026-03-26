@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { getBookmarks } from '../utils/bookmarks';
 import style from './MainSection.css';
-import { t, isChineseUser } from '../i18n';
+import { t } from '../i18n';
 
 const cacheIds = {};
 
@@ -16,64 +16,11 @@ export default class MainSection extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      treeNodes: [],
-      searchKeyword: ''
+      treeNodes: []
     };
   }
 
-  handleSearchChange = (e) => {
-    this.setState({ searchKeyword: e.target.value });
-  }
 
-  translateToEnglish = async (text) => {
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=${encodeURIComponent(text)}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (data && data[0] && data[0][0] && data[0][0][0]) {
-        return data[0][0][0];
-      }
-      return text;
-    } catch (error) {
-      console.error('Translation error:', error);
-      return text;
-    }
-  }
-
-  handleSearch = async () => {
-    const { searchKeyword } = this.state;
-    if (!searchKeyword.trim()) return;
-    let keyword = searchKeyword;
-    if (isChineseUser()) {
-      keyword = await this.translateToEnglish(keyword);
-    }
-    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(keyword)}`;
-    window.location.href = searchUrl;
-  }
-
-  handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      this.handleSearch();
-    }
-  }
-
-  renderSearchBox() {
-    return (
-      <div className={style.searchBox}>
-        <input
-          type="text"
-          placeholder={t('searchPlaceholder')}
-          value={this.state.searchKeyword}
-          onChange={this.handleSearchChange}
-          onKeyPress={this.handleKeyPress}
-          className={style.searchInput}
-        />
-        <button onClick={this.handleSearch} className={style.searchButton}>
-          {t('searchButton')}
-        </button>
-      </div>
-    );
-  }
 
   async fetchBookmarks(id, isLoop) {
     const bookmarks = await getBookmarks(id);
@@ -182,7 +129,6 @@ export default class MainSection extends Component {
         <section key={id}>
           <div className={style.sectionHeader}>
             <h1 id={id}>{title}</h1>
-            {index === 0 && this.renderSearchBox()}
           </div>
           {
             bookmarks.map(treeNode => {
