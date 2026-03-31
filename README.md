@@ -14,11 +14,18 @@
 - 实时同步书签 Real-time Bookmark Synchronization
 - 弹出框中提供开关可临时关闭该功能 A toggle switch is provided within the pop-up window to temporarily disable this feature.
 
+## 效果演示
+<p align="center">
+  <img src="https://lh3.googleusercontent.com/6iE2MB4UFRm4wHJvFFKWcYMtUF3FJFxuIelIpGaLCgAbOJzfhqlwyOqPvqaxtzsqjxEVNSbs_zb4Utf4ZWrb11oo=s1280-w1280-h800" alt="效果演示" width="800">
+</p>
+
+
 ## 安装
 
 ### 从 Chrome Web Store 安装
 
-*即将上线*
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/bpnjommoddppdifieafdlpfomplpciic?label=Chrome%20Web%20Store&logo=google-chrome&color=4285F4)](https://chromewebstore.google.com/detail/bpnjommoddppdifieafdlpfomplpciic)
+
 
 ### 从源码安装
 
